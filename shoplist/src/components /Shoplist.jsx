@@ -1,14 +1,13 @@
 import { useState } from 'react'
+import Item from './Item';
+import items from '../data/items';
 
 function Shoplist() {
     const [count, setCount] = useState(0)
 
     return (
         <>
-         <button onClick={() => setCount((count) => count + 7)}>
-          count is {count}
-        </button>
-
+     
             <div id="container">
                 <header>
                     <h1>Shopping List </h1>
@@ -20,12 +19,6 @@ function Shoplist() {
                     <button id="addbutton">Add</button>
                 </form>
 
-                <div id="list">
-                    <h2>Bought Items</h2>
-                    <ul className="ulist ">
-                    </ul>
-                </div>
-
                 <section id="pressbutton">
                     {/* buttons with onclick attribute added upon user usage   */}
                     <button id="markedlist" >Mark Purchased</button>
@@ -34,6 +27,18 @@ function Shoplist() {
                 </section>
 
             </div>
+
+         <ul className="Items">
+        {items.map((items) => (
+          <Item key={items.id} name={items.name} category={items.category} />
+        ))}
+      </ul>
+
+
+
+        <button id='count' onClick={() => setCount((count) => count + 7)}>
+          count is {count}
+        </button>
 
         </>
 
